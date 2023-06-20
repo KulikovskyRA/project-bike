@@ -8,12 +8,12 @@ function Login() {
         <h3>Войдите в свой аккаунт!</h3>
         <div className="form-floating mb-3">
           <input
-            id="username"
-            type="text"
-            name="username"
+            id="email"
+            type="email"
+            name="email"
             className="form-control"
           />
-          <label htmlFor="username">Введите свой псевдоним:</label>
+          <label htmlFor="email">Введите свою электронную почту:</label>
         </div>
         <div className="form-floating mb-3">
           <input

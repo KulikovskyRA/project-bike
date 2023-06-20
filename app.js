@@ -9,8 +9,8 @@ const path = require('path');
 const expressSession = require('express-session');
 const FileStore = require('session-file-store')(expressSession);
 
-// const viewRouter = require('./src/routers/index');
-// const userRouter = require('./src/routers/user');
+const indexRouter = require('./src/routers/index.router');
+const userRouter = require('./src/routers/user.router');
 
 // const orderRouter = require('./src/routers/order');
 
@@ -35,17 +35,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '/public')));
 
-// app.use('/', viewRouter);
-// app.use('/users', userRouter);
+app.use('/', indexRouter);
+app.use('/users', userRouter);
 // app.use('/orders', orderRouter);
 
 // app.get('/*', (req, res) => {
 //     res.redirect('/');
 //   });
-
-app.get('/', (req, res) => {
-  res.send('Работает');
-});
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
