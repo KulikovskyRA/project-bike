@@ -21,7 +21,7 @@ module.exports = function Profile({
             <>
               <li key={favorCycleRoute.Way.id}>
                 {/* должно переводить на страницу с подробной информацией */}
-                <a href={`/${favorCycleRoute.Way.id}`}>
+                <a href={`/description/${favorCycleRoute.Way.id}`}>
                   {favorCycleRoute.Way.title}
                 </a>
                 <br />
@@ -50,7 +50,7 @@ module.exports = function Profile({
             <>
               <li key={cycleRoute.id}>
                 {/* должно переводить на страницу с подробной информацией */}
-                <a href={`/${cycleRoute.id}`}>{cycleRoute.title}</a>
+                <a href={`/description/${cycleRoute.id}`}>{cycleRoute.title}</a>
 
                 {cycleRoute.approved === false ? (
                   <div>Ожидается проверка</div>
