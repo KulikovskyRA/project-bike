@@ -11,6 +11,7 @@ const FileStore = require('session-file-store')(expressSession);
 
 const indexRouter = require('./src/routers/index.router');
 const userRouter = require('./src/routers/user.router');
+const wayRouter = require('./src/routers/way.router');
 
 // const orderRouter = require('./src/routers/order');
 
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.use('/', indexRouter);
 app.use('/users', userRouter);
+app.use('/way', wayRouter);
 // app.use('/orders', orderRouter);
 
 // app.get('/*', (req, res) => {
