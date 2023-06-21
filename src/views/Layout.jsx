@@ -19,6 +19,8 @@ module.exports = function Layout({ children, title, user }) {
         <link defer rel="stylesheet" href="/css/style.css" />
 
         <script defer src="/js/layout.js" />
+        <script defer src="/js/delete.js" />
+
         <script
           defer
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
@@ -40,7 +42,7 @@ module.exports = function Layout({ children, title, user }) {
 
               <span className="userNameSpan navbar-brand">
                 {user?.username ? (
-                  user?.username
+                  <a href="/profile/myway">{user.username}</a>
                 ) : (
                   <a className="navbar-brand" href="/users/register">
                     Создать аккаунт!
