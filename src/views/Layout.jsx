@@ -40,6 +40,17 @@ module.exports = function Layout({ children, title, user }) {
               </a>
               <span className="navbar-brand"> | </span>
 
+              {user?.admin === true ? (
+                <span>
+                  <a className="navbar-brand" href="/admin">
+                    Проверка маршрутов
+                  </a>
+                  <span className="navbar-brand"> | </span>
+                </span>
+              ) : (
+                <div />
+              )}
+
               <span className="userNameSpan navbar-brand">
                 {user?.username ? (
                   <a href="/profile/myway">{user.username}</a>
