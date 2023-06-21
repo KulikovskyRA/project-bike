@@ -16,7 +16,7 @@ module.exports = function Layout({ children, title, user }) {
         />
 
         <link defer rel="stylesheet" href="/css/normalize.css" />
-        <link defer rel="stylesheet" href="/css/style.css" />
+        <link defer rel="stylesheet" href="/css/favorites.css" />
         <link defer rel="stylesheet" href="/css/formFeedback.css" />
 
         <script defer src="/js/delete.js" />
