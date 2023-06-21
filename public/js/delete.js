@@ -6,13 +6,13 @@ const deleteBtnFavor = document.querySelector('#deleteButtonFavor');
 //* список избранного
 deleteBtnFavor?.addEventListener('click', async (e) => {
   e.preventDefault();
-  console.log('del');
+  // console.log('del');
   const favorCycleRouteId = deleteBtnFavor.dataset.favorcyclerouteid; // находит по id
-  console.log(favorCycleRouteId);
+  //console.log(favorCycleRouteId);
   const response = await fetch(`/profile/myway/favor/${favorCycleRouteId}`, {
     method: 'DELETE',
   });
-  console.log(response);
+  // console.log(response);
   if (response.status === 200) window.location.href = '/profile/myway';
 });
 
