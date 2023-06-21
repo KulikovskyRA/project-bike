@@ -63,18 +63,19 @@ router.get('/error', (req, res) => {
   render(ErrorPage, { errorSMS }, res);
 });
 
-router.delete('/admin', async (req, res) => {
-  const { id } = req.body;
+//! Удалить при мердже, я перенёс в admin.router
+// router.delete('/admin', async (req, res) => {
+//   const { id } = req.body;
 
-  try {
-    const deleteOne = await Way.findByPk(id);
-    await deleteOne.destroy();
+//   try {
+//     const deleteOne = await Way.findByPk(id);
+//     await deleteOne.destroy();
 
-    res.sendStatus(200);
-  } catch (err) {
-    console.log(err);
-    res.sendStatus(404);
-  }
-});
+//     res.sendStatus(200);
+//   } catch (err) {
+//     console.log(err);
+//     res.sendStatus(404);
+//   }
+// });
 
 module.exports = router;
