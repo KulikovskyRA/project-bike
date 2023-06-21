@@ -51,6 +51,13 @@ module.exports = function Profile({
               <li key={cycleRoute.id}>
                 {/* должно переводить на страницу с подробной информацией */}
                 <a href={`/${cycleRoute.id}`}>{cycleRoute.title}</a>
+
+                {cycleRoute.approved === false ? (
+                  <div>Ожидается проверка</div>
+                ) : (
+                  <div />
+                )}
+
                 <br />
                 {cycleRoute.city}
               </li>

@@ -17,6 +17,7 @@ module.exports = {
           },
           key: 'id',
         },
+        onDelete: 'cascade',
       },
       way_id: {
         type: Sequelize.INTEGER,
@@ -26,6 +27,7 @@ module.exports = {
           },
           key: 'id',
         },
+        onDelete: 'cascade',
       },
       score: {
         type: Sequelize.INTEGER,
