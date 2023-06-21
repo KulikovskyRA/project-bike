@@ -13,6 +13,8 @@ const indexRouter = require('./src/routers/index.router');
 const userRouter = require('./src/routers/user.router');
 const wayRouter = require('./src/routers/way.router');
 
+const profileRouter = require('./src/routers/profile.router');
+
 // const orderRouter = require('./src/routers/order');
 
 const sessionConfig = {
@@ -38,7 +40,12 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.use('/', indexRouter);
 app.use('/users', userRouter);
+
 app.use('/way', wayRouter);
+
+
+app.use('/profile', profileRouter);
+
 // app.use('/orders', orderRouter);
 
 // app.get('/*', (req, res) => {
