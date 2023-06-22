@@ -16,6 +16,8 @@ const wayRouter = require('./src/routers/way.router');
 const profileRouter = require('./src/routers/profile.router');
 const descriptionRouter = require('./src/routers/description.router');
 
+const adminRouter = require('./src/routers/admin.router');
+
 // const orderRouter = require('./src/routers/order');
 
 const sessionConfig = {
@@ -46,7 +48,12 @@ app.use('/way', wayRouter);
 
 
 app.use('/profile', profileRouter);
+
+
+app.use('/admin', adminRouter);
+
 app.use('/description', descriptionRouter);
+
 
 // app.use('/orders', orderRouter);
 
