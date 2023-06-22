@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       city: DataTypes.STRING,
       way_length: DataTypes.INTEGER,
-      way_data: DataTypes.STRING,
+      way_data: DataTypes.TEXT,
+      way_time: DataTypes.STRING,
       picture_data: DataTypes.STRING,
     },
     {

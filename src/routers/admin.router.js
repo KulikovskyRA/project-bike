@@ -4,18 +4,14 @@ const render = require('../render');
 
 const router = express.Router();
 
-const isAuth = require('../middlewares/isAuth');
+const isAdmin = require('../middlewares/isAdmin');
 
-const Main = require('../views/Main');
-const Login = require('../views/Login');
-const Register = require('../views/Register');
-const ErrorPage = require('../views/ErrorPage');
 const Admin = require('../views/Admin');
 
 const { User, Favor, Way, Review } = require('../../db/models');
 
 router
-  .get('/', async (req, res) => {
+  .get('/', isAdmin, async (req, res) => {
     const notApproved = await Way.findAll({
       raw: true,
       nest: true,

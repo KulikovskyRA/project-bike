@@ -31,6 +31,9 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       way_data: {
+        type: Sequelize.TEXT,
+      },
+      way_time: {
         type: Sequelize.STRING,
       },
       picture_data: {
