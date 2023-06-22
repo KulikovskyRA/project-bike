@@ -40,35 +40,40 @@ function init() {
     myMap.geoObjects.add(multiRoute);
     console.log(myMap.geoObjects);
 
-    
     multiRoute.model.events.add('requestsuccess', async function () {
       // Получение ссылки на активный маршрут.
       var activeRoute = multiRoute.getActiveRoute();
       // Вывод информации о маршруте.
-      console.log("Длина: " + activeRoute.properties.get("distance").text);
-      console.log("Время прохождения: " + activeRoute.properties.get("duration").text);
+      console.log('Длина: ' + activeRoute.properties.get('distance').text);
+      console.log(
+        'Время прохождения: ' + activeRoute.properties.get('duration').text
+      );
       //TODO
       const title = 'Test title';
       const city = 'Test city';
       const picture_data = 'image';
-      const way_time = activeRoute.properties.get("duration").text;
-      const way_length = activeRoute.properties.get("distance").text;
+      const way_time = activeRoute.properties.get('duration').text;
+      const way_length = activeRoute.properties.get('distance').text;
       const way_data = [...arrCoord];
       await fetch('http://localhost:3000/way/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ title, city, picture_data, way_time, way_length, way_data, })
+        body: JSON.stringify({
+          title,
+          city,
+          picture_data,
+          way_time,
+          way_length,
+          way_data,
+        }),
       });
-      if (activeRoute.properties.get("blocked")) {
-        console.log("На маршруте имеются участки с перекрытыми дорогами.");
+      if (activeRoute.properties.get('blocked')) {
+        console.log('На маршруте имеются участки с перекрытыми дорогами.');
       }
     });
-  }));
-  
-
-
+  });
 
   let count = 1;
   myMap.events.add('click', function (e) {
@@ -99,7 +104,4 @@ function init() {
     //   myMap.balloon.close();
     // }
   });
-
-
-
 }
