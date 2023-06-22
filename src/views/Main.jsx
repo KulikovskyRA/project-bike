@@ -4,6 +4,16 @@ const Layout = require('./Layout');
 module.exports = function Main({ user, approved }) {
   return (
     <Layout user={user}>
+      <div className="upper">
+        <input id="search" type="text" name="search" className="searchInput" />
+        <button type="button" className="confirmSearch">
+          Найти по названию
+        </button>
+        <button type="button" className="refreshSearch">
+          Очистить поиск
+        </button>
+        <a href="way">Создать маршрут</a>
+      </div>
       <div className="cont">
         {approved.map((way) => (
           <div className="card" id={way.id}>

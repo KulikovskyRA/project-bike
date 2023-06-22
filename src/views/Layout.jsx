@@ -19,9 +19,6 @@ module.exports = function Layout({ children, title, user }) {
         <link defer rel="stylesheet" href="/css/favorites.css" />
         <link defer rel="stylesheet" href="/css/formFeedback.css" />
 
-        <script defer src="/js/delete.js" />
-        <script defer src="/js/feedback.js" />
-
         <script
           defer
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"

@@ -11,9 +11,11 @@
   color: black;
 }
 
+
 [id='favorite'] {
   display: none;
 }
+
 
 [id='favorite']:checked + label svg {
   fill: hsl(0deg 100% 50%);
