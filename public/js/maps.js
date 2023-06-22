@@ -40,30 +40,35 @@ function init() {
     myMap.geoObjects.add(multiRoute);
     console.log(myMap.geoObjects);
 
-    multiRoute.model.events.add('requestsuccess', function () {
+    
+    multiRoute.model.events.add('requestsuccess', async function () {
       // Получение ссылки на активный маршрут.
       var activeRoute = multiRoute.getActiveRoute();
       // Вывод информации о маршруте.
-      console.log('Длина: ' + activeRoute.properties.get('distance').text);
-      console.log(
-        'Время прохождения: ' + activeRoute.properties.get('duration').text
-      );
-      // Для автомобильных маршрутов можно вывести
-      // информацию о перекрытых участках.
-      if (activeRoute.properties.get('blocked')) {
-        console.log('На маршруте имеются участки с перекрытыми дорогами.');
+      console.log("Длина: " + activeRoute.properties.get("distance").text);
+      console.log("Время прохождения: " + activeRoute.properties.get("duration").text);
+      //TODO
+      const title = 'Test title';
+      const city = 'Test city';
+      const picture_data = 'image';
+      const way_time = activeRoute.properties.get("duration").text;
+      const way_length = activeRoute.properties.get("distance").text;
+      const way_data = [...arrCoord];
+      await fetch('http://localhost:3000/way/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title, city, picture_data, way_time, way_length, way_data, })
+      });
+      if (activeRoute.properties.get("blocked")) {
+        console.log("На маршруте имеются участки с перекрытыми дорогами.");
       }
     });
-  });
+  }));
+  
 
-  // Создание экземпляра маршрута.
 
-  // // // Добавление маршрута на карту.
-  // myMap.geoObjects.add(multiRoute);
-
-  // Обработка события, возникающего при щелчке
-  // левой кнопкой мыши в любой точке карты.
-  // При возникновении такого события откроем балун.
 
   let count = 1;
   myMap.events.add('click', function (e) {
@@ -95,16 +100,6 @@ function init() {
     // }
   });
 
-  // Обработка события, возникающего при щелчке
-  // правой кнопки мыши в любой точке карты.
-  // При возникновении такого события покажем всплывающую подсказку
-  // в точке щелчка.
-  myMap.events.add('contextmenu', function (e) {
-    myMap.hint.open(e.get('coords'), 'Кто-то щелкнул правой кнопкой');
-  });
 
-  // Скрываем хинт при открытии балуна.
-  myMap.events.add('balloonopen', function (e) {
-    myMap.hint.close();
-  });
+
 }

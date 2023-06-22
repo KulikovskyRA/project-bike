@@ -1,0 +1,2 @@
+ymaps.ready(init);
+
