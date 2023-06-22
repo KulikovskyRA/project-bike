@@ -18,12 +18,12 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
       <div>Оценка </div>
       <input
         type="checkbox"
-        checked="checked"
+        defaultChecked="checked"
         id="favorite"
         name="favorite-checkbox"
         value="favorite-button"
       />
-      <label htmlFor="favorite" className="container">
+      <label htmlFor="favorite" className="container_label">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -56,7 +56,11 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
         Можно отправить пустой отзыв, но нельзя отправить без оценки
       </button>
       {/* Должен быть список отзывов */}
-      <form action="" id="formFeedback">
+      <form
+        action={`/description/newrev/${oneWay.id}`}
+        method="POST"
+        id="formFeedback"
+      >
         {/* добавить оценку от 1 до 5*/}
         <label>Поделитесь своим мнением (необязательно)</label>
         <input
@@ -64,23 +68,21 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
           name="text_body"
           maxLength="200"
           placeholder="Максимум 200 символов"
+          className="input_clear"
         />
-        <button>Опубликовать</button>
+        <button data-onewayid={oneWay.id}>Опубликовать</button>
       </form>
       <div>
         Отзывы:
-        <ul>
+        <ul className="review_all">
           {/* список отзывов */}
 
           {reviews.map((review) => (
-            <>
-              <li key={review.id}>
-                {review.text_body}
-                <p>{review.User.username}</p>
-                <span>{review.createdAt.toString()}</span>
-              </li>
-              {/* каждый юзер может удалить свой отзыв, а админ удаляет все */}
-            </>
+            <li key={`review${review.id}`}>
+              {review.text_body}
+              <p>{review['User.username']}</p>
+              <span>{review.createdAt.toLocaleString()}</span>
+            </li>
           ))}
         </ul>
       </div>
