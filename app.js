@@ -18,8 +18,6 @@ const descriptionRouter = require('./src/routers/description.router');
 
 const adminRouter = require('./src/routers/admin.router');
 
-// const orderRouter = require('./src/routers/order');
-
 const sessionConfig = {
   store: new FileStore(), // добавить после установки session-file-store
   secret: process.env.SECRET_KEY_SESSION,
@@ -46,16 +44,11 @@ app.use('/users', userRouter);
 
 app.use('/way', wayRouter);
 
-
 app.use('/profile', profileRouter);
-
 
 app.use('/admin', adminRouter);
 
 app.use('/description', descriptionRouter);
-
-
-// app.use('/orders', orderRouter);
 
 // app.get('/*', (req, res) => {
 //     res.redirect('/');
