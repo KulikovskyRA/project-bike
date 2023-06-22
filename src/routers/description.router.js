@@ -18,7 +18,7 @@ router
         }
       );
       //console.log(oneWay);
-
+      
       const reviews = await Review.findAll({
         include: [{ model: User, attributes: ['username'] }],
         order: [['id', 'DESC']],
@@ -75,5 +75,16 @@ router
       console.log(error);
     }
   });
+
+router.get('/route/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const oneWay = await Way.findByPk(id);
+    res.send(oneWay);
+    res.end();
+  } catch (error) {
+    res.end(error);
+  }
+});
 
 module.exports = router;
