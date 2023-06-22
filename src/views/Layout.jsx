@@ -16,10 +16,11 @@ module.exports = function Layout({ children, title, user }) {
         />
 
         <link defer rel="stylesheet" href="/css/normalize.css" />
-        <link defer rel="stylesheet" href="/css/style.css" />
+        <link defer rel="stylesheet" href="/css/favorites.css" />
+        <link defer rel="stylesheet" href="/css/formFeedback.css" />
 
-        <script defer src="/js/layout.js" />
         <script defer src="/js/delete.js" />
+        <script defer src="/js/feedback.js" />
 
         <script
           defer
@@ -27,6 +28,8 @@ module.exports = function Layout({ children, title, user }) {
           integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
           crossOrigin="anonymous"
         />
+        <link type="text/css" rel="stylesheet" href="/css/map.css" />
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=9722eebf-d9d9-4550-9d23-8795e75df5e2"></script>
       </head>
       <body>
         <nav
