@@ -87,6 +87,7 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
       {/* здесь должен отображаться маршрут, который уже построен и его можно просмотреть, приблизившись на карте */}
       <div id="YMapsID"></div>
       <script defer type="text/javascript" src="/js/maps.js" />
+      <script defer src="/js/feedback.js" />
     </Layout>
   );
 };

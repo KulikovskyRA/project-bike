@@ -15,66 +15,62 @@ module.exports = function Profile({
       </div>
       <div>
         Любимые маршруты
-        <ul>
-          {/* список избранного */}
+        <div className="containFavor">
           {favorCycleRoutes.map((favorCycleRoute) => (
-            <>
-              <li key={favorCycleRoute.Way.id}>
-                {/* должно переводить на страницу с подробной информацией */}
-                <a href={`/description/${favorCycleRoute.Way.id}`}>
-                  {favorCycleRoute.Way.title}
-                </a>
-                <br />
-                {favorCycleRoute.Way.city}
-              </li>
-              <li>
-                <button
-                  id="deleteButtonFavor"
-                  data-favorcyclerouteid={favorCycleRoute.id}
-                  type="button"
-                  value="delete"
-                >
-                  X
-                </button>
-              </li>
-            </>
+            <div>
+              <a
+                key={favorCycleRoute.Way.id}
+                href={`/description/${favorCycleRoute.Way.id}`}
+              >
+                {favorCycleRoute.Way.title}
+              </a>
+              <br />
+              {favorCycleRoute.Way.city}
+              <button
+                id="deleteButtonFavor"
+                data-favorcyclerouteid={favorCycleRoute.id}
+                type="button"
+                value="delete"
+                className="deleteButtonFavor"
+              >
+                X
+              </button>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
 
       <div>
         Мои маршруты
-        <ul>
-          {/* список маршрутов созданных пользователем*/}
+        <div className="contain">
           {builtCycleRoutes.map((cycleRoute) => (
-            <>
-              <li key={cycleRoute.id}>
-                {/* должно переводить на страницу с подробной информацией */}
-                <a href={`/description/${cycleRoute.id}`}>{cycleRoute.title}</a>
+            <div>
+              <a key={cycleRoute.id} href={`/description/${cycleRoute.id}`}>
+                {cycleRoute.title}
+              </a>
+              {cycleRoute.approved === false ? (
+                <div>Ожидается проверка</div>
+              ) : (
+                <div />
+              )}
 
-                {cycleRoute.approved === false ? (
-                  <div>Ожидается проверка</div>
-                ) : (
-                  <div />
-                )}
+              <br />
+              {cycleRoute.city}
 
-                <br />
-                {cycleRoute.city}
-              </li>
-              <li>
-                <button
-                  id="deleteButtonCycleRoute"
-                  data-cyclerouteid={cycleRoute.id}
-                  type="button"
-                  value="delete"
-                >
-                  X
-                </button>
-              </li>
-            </>
+              <button
+                id="deleteButtonCycleRoute"
+                data-cyclerouteid={cycleRoute.id}
+                type="button"
+                value="delete"
+                className="deleteButtonCycleRoute"
+              >
+                X
+              </button>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
+      <script defer src="/js/delete.js" />
     </Layout>
   );
 };

@@ -11,9 +11,7 @@ label {
   color: black;
 }
 
-input {
-  display: none;
-}
+[id='favorite'] {  display: none;}
 
 input:checked + label svg {
   fill: hsl(0deg 100% 50%);
