@@ -11,7 +11,7 @@ module.exports = function Profile({
       <div>
         <h1>Привет, {user.username}!</h1>
         {/* ссылка на создание карточки с новым веломаршрутом */}
-        <a href="way">Создать маршрут</a>
+        <a href="/way">Создать маршрут</a>
       </div>
       <div>
         Любимые маршруты
@@ -44,7 +44,6 @@ module.exports = function Profile({
         Мои маршруты
         <div className="contain">
           {builtCycleRoutes.map((cycleRoute) => (
-
             <div>
               <a key={cycleRoute.id} href={`/description/${cycleRoute.id}`}>
                 {cycleRoute.title}
@@ -54,7 +53,6 @@ module.exports = function Profile({
               ) : (
                 <div />
               )}
-
 
               <br />
               {cycleRoute.city}
