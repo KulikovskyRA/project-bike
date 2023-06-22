@@ -15,7 +15,7 @@ module.exports = function Main({ user, notApproved }) {
             </div>
             <div>{way.way_length}</div>
             <div>{way.way_data}</div>
-            <a href={`/${way.id}`}>Перейти в {way.id}</a>
+            <a href={`/description/${way.id}`}>Перейти в {way.id}</a>
             <div>
               <button type="button" className="adminDel">
                 Удалить
