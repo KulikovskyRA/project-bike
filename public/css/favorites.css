@@ -1,4 +1,4 @@
-label {
+.container_label {
   background-color: white;
   display: flex;
   align-items: center;
@@ -11,11 +11,11 @@ label {
   color: black;
 }
 
-input {
+[id='favorite'] {
   display: none;
 }
 
-input:checked + label svg {
+[id='favorite']:checked + label svg {
   fill: hsl(0deg 100% 50%);
   stroke: hsl(0deg 100% 50%);
   animation: heartButton 1s;
@@ -43,13 +43,13 @@ input:checked + label svg {
   }
 }
 
-input + label .action {
+[id='favorite'] + .container_label .action {
   position: relative;
   overflow: hidden;
   display: grid;
 }
 
-input + label .action span {
+[id='favorite'] + .container_label .action span {
   grid-column-start: 1;
   grid-column-end: 1;
   grid-row-start: 1;
@@ -57,22 +57,22 @@ input + label .action span {
   transition: all 0.5s;
 }
 
-input + label .action span.option-1 {
+[id='favorite'] + .container_label .action span.option-1 {
   transform: translate(0px, 0%);
   opacity: 1;
 }
 
-input:checked + label .action span.option-1 {
+[id='favorite']:checked + .container_label .action span.option-1 {
   transform: translate(0px, -100%);
   opacity: 0;
 }
 
-input + label .action span.option-2 {
+[id='favorite'] + .container_label .action span.option-2 {
   transform: translate(0px, 100%);
   opacity: 0;
 }
 
-input:checked + label .action span.option-2 {
+[id='favorite']:checked + .container_label .action span.option-2 {
   transform: translate(0px, 0%);
   opacity: 1;
 }

@@ -8,7 +8,7 @@ const DescriptionRoute = require('../views/DescriptionRoute');
 const { User, Favor, Way, Review } = require('../../db/models');
 
 router
-  .get('/:id', async (req, res) => {
+  .get('/:id', isAuth, async (req, res) => {
     try {
       const oneWay = await Way.findByPk(
         req.params.id,
@@ -22,6 +22,7 @@ router
       const reviews = await Review.findAll({
         include: [{ model: User, attributes: ['username'] }],
         order: [['id', 'DESC']],
+        raw: true,
       });
       console.log(reviews);
       render(
@@ -33,24 +34,43 @@ router
       console.log(error);
     }
   })
-  
-  //отзывы должно создаваться на странице с конкретным id, под которым они оставляются
-  // оставлять их могут только зарегистрированные юзеры
-  .post('/:id', async (req, res) => {
+
+  .get('/newrev/:id', async (req, res) => {
+    const newReview = await Review.findByPk(req.params.id, {
+      include: [{ model: User, attributes: ['username'] }],
+    });
+    res.send(newReview);
+    res.end();
+  })
+
+  .post('/newrev/:id', async (req, res) => {
+    const { id } = req.params;
     try {
-      const newReview = await Review.create(
-        {
-          user_id: req.body.session?.user?.username,
-          score: req.body.score,
-          text_body: req.body.text_body,
+      const serch = await Review.findOne({
+        where: {
+          way_id: id,
+          user_id: req.session?.user?.id,
         },
-        {
-          returning: true,
-          plain: true,
-        }
-      );
-      //  res.redirect(`/entries/${newEntry.id}`);
-      console.log(newReview);
+      });
+
+      if (!serch) {
+        const newReview = await Review.create(
+          {
+            way_id: id,
+            user_id: req.session?.user?.id,
+            score: req.body.score,
+            text_body: req.body.text_body,
+          },
+          {
+            returning: true,
+            plain: true,
+          }
+        );
+        console.log(newReview);
+        res.send(newReview);
+        res.status(200);
+        res.end();
+      }
     } catch (error) {
       console.log(error);
     }

@@ -48,7 +48,7 @@ module.exports = function Profile({
           {/* список маршрутов созданных пользователем*/}
           {builtCycleRoutes.map((cycleRoute) => (
             <>
-              <li key={cycleRoute.id}>
+              <li key={`cycleRoute${cycleRoute.id}`}>
                 {/* должно переводить на страницу с подробной информацией */}
                 <a href={`/description/${cycleRoute.id}`}>{cycleRoute.title}</a>
 
