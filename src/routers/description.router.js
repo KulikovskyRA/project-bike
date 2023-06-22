@@ -18,7 +18,7 @@ router
         }
       );
       //console.log(oneWay);
-      
+
       const reviews = await Review.findAll({
         include: [{ model: User, attributes: ['username'] }],
         order: [['id', 'DESC']],
@@ -76,15 +76,69 @@ router
     }
   });
 
-router.get('/route/:id', async (req, res) => {
-  const { id } = req.params;
-  try {
-    const oneWay = await Way.findByPk(id);
-    res.send(oneWay);
-    res.end();
-  } catch (error) {
-    res.end(error);
-  }
-});
+router
+  .get('/route/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+      const oneWay = await Way.findByPk(id);
+      res.send(oneWay);
+      res.end();
+    } catch (error) {
+      res.end(error);
+    }
+  })
+
+  .post('/route/like', async (req, res) => {
+    console.log(req.body);
+    const { way_id, user_id } = req.body;
+    try {
+      const serchLike = await Favor.findOne({
+        where: {
+          way_id,
+          user_id,
+        },
+      });
+
+      if (!serchLike) {
+        const like = await Favor.create(
+          {
+            way_id,
+            user_id,
+          },
+          {
+            returning: true,
+            plain: true,
+          }
+        );
+        res.json({ status: true });
+      } else {
+        await serchLike.destroy();
+        res.json({ status: false });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  })
+
+  .post('/route/check', async (req, res) => {
+    console.log(req.body);
+    const { way_id, user_id } = req.body;
+    try {
+      const serchLike = await Favor.findOne({
+        where: {
+          way_id,
+          user_id,
+        },
+      });
+
+      if (!serchLike) {
+        res.json({ status: false });
+      } else {
+        res.json({ status: true });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
 module.exports = router;
