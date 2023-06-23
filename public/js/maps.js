@@ -5,8 +5,27 @@ ymaps.ready(init);
 
 const arrCoord = [];
 
+function createFileForm(id) {
+  const form = document.createElement('form');
+  form.className = 'upload-photo';
+  form.action = `http://localhost:3000/way/addphoto/${id}`;
+  form.enctype = 'multipart/form-data';
+  form.method = 'POST';
+  const inputFile = document.createElement('input');
+  inputFile.className = 'input-file';
+  inputFile.type = 'file';
+  inputFile.name = 'photo';
+  const button = document.createElement('button');
+  button.innerText = 'Загрузить';
+  button.type = 'submit';
+  form.appendChild(inputFile);
+  form.appendChild(button);
+  const container = document.querySelector('.forUploadFile');
+  container.appendChild(form);
+}
+
 async function saveRoute(title, city, picture_data, way_time, way_length, way_data,) {
-  await fetch('http://localhost:3000/way/add', {
+  const response = await fetch('http://localhost:3000/way/add', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -20,7 +39,15 @@ async function saveRoute(title, city, picture_data, way_time, way_length, way_da
       way_data,
     }),
   });
-  document.location.href = 'http://localhost:3000/profile/myway';
+  // const response = await fetch('http://localhost:3000/way/add');
+  const result = await response.json();
+  console.log(result);
+  createFileForm(result.id);
+  const form = document.querySelector('.upload-photo');
+  // form.addEventListener('submit', ((e) => {
+  //   e.preventDefault();
+  // }));
+  //document.location.href = 'http://localhost:3000/profile/myway';
 }
 
 function init() {
