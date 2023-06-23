@@ -23,8 +23,9 @@ router
         include: [{ model: User, attributes: ['username'] }],
         order: [['id', 'DESC']],
         raw: true,
+        where: { way_id: Number(req.params.id) },
       });
-      console.log(reviews);
+      // console.log(reviews);
       render(
         DescriptionRoute,
         { user: req.session.user, oneWay, reviews },
