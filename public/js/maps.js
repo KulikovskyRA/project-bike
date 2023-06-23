@@ -1,6 +1,6 @@
 const mapButton = document.querySelector('.mapButton');
 const btnContainer = document.querySelector('.buttons_container');
-const inputWayTitle = document.querySelector('.way-title');
+
 ymaps.ready(init);
 
 const arrCoord = [];
@@ -11,13 +11,17 @@ function createFileForm(id) {
   form.action = `http://localhost:3000/way/addphoto/${id}`;
   form.enctype = 'multipart/form-data';
   form.method = 'POST';
+  const labelPhoto = document.createElement('label');
+  labelPhoto.innerText = 'Загрузите фотографию';
+  labelPhoto.className = 'lbelPhoto';
   const inputFile = document.createElement('input');
   inputFile.className = 'input-file';
   inputFile.type = 'file';
   inputFile.name = 'photo';
   const button = document.createElement('button');
-  button.innerText = 'Загрузить';
+  button.innerText = 'Сохранить';
   button.type = 'submit';
+  form.appendChild(labelPhoto);
   form.appendChild(inputFile);
   form.appendChild(button);
   const container = document.querySelector('.forUploadFile');
@@ -119,14 +123,24 @@ function init() {
       // var wayPoints = multiRoute.getWayPoints();
       // wayPoints.each((point) => console.log(point.geometry._coordinates));
       //console.log(wayPoints);
+      const inputWayName = document.createElement('input');
+      inputWayName.className = 'way-title';
+      inputWayName.type = 'text';
       const saveButton = document.createElement('button');
       saveButton.className = 'button-save-map';
-      saveButton.innerText = 'Сохранить';
-      const checkSaveBtn = document.querySelector('.button-save-map');
+      saveButton.innerText = 'Далее';
+      let checkSaveBtn = document.querySelector('.button-save-map');
+      console.log('BUTTON', checkSaveBtn);
       if (!checkSaveBtn) {
+        const labelInput = document.createElement('label');
+        labelInput.innerText = 'Придумайте название маршрута';
+        btnContainer.appendChild(labelInput);
+        btnContainer.appendChild(inputWayName);
+        const inputWayTitle = document.querySelector('.way-title');
         btnContainer.appendChild(saveButton);
         const newSaveButton = document.querySelector('.button-save-map');
         newSaveButton.addEventListener('click', ((e) => {
+          saveButton.remove();
           let title = inputWayTitle.value;
           //let city = 'Test city';
           let picture_data = 'image';
@@ -150,6 +164,7 @@ function init() {
           //saveRoute(title, city, picture_data, way_time, way_length, way_data);
         }));
       }
+      
       
       // Сохранение маршрута
       // await fetch('http://localhost:3000/way/add', {

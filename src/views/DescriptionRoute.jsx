@@ -12,7 +12,9 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
 
   return (
     <Layout user={user}>
+      <link rel="stylesheet" href="/css/favorites.css" />
       <div>{oneWay.title}</div>
+
       <div>
         Длина маршрута:
         {oneWay.way_length}
@@ -31,6 +33,7 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
         {oneWay.city}
       </div>
 
+
       <button
         id="favorite"
         name="favorite-checkbox"
@@ -40,12 +43,12 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
       >
         Добавить в избранное
       </button>
-      <div>
-        Оцените приложения
-        <br />! выводится список звездочек или колёс при нажатии на них
-        предлагается оставить отзыв, если пользователь не хочет оставлять отзыв,
-        то можно просто отправить оценку
-      </div>
+      {/*<div>*/}
+      {/*  Оцените приложения*/}
+      {/*  <br/>! выводится список звездочек или колёс при нажатии на них*/}
+      {/*  предлагается оставить отзыв, если пользователь не хочет оставлять отзыв,*/}
+      {/*  то можно просто отправить оценку*/}
+      {/*</div>*/}
 
       <button id="buttonLeaveFeedback">
         Оставить отзыв
@@ -58,6 +61,20 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
         id="formFeedback"
       >
         {/* добавить оценку от 1 до 5*/}
+
+        <div className="rating">
+          <input type="radio" name="rating" id="rating1" value="1" required />
+          <label htmlFor="rating1">1</label>
+          <input type="radio" name="rating" id="rating2" value="2" />
+          <label htmlFor="rating2">2</label>
+          <input type="radio" name="rating" id="rating3" value="3" />
+          <label htmlFor="rating3">3</label>
+          <input type="radio" name="rating" id="rating4" value="4" />
+          <label htmlFor="rating4">4</label>
+          <input type="radio" name="rating" id="rating5" value="5" />
+          <label htmlFor="rating5">5</label>
+        </div>
+
         <label>Поделитесь своим мнением (необязательно)</label>
         <input
           type="text"
