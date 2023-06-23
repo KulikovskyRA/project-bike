@@ -2,15 +2,30 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
+  // ☆ ★ ✮ ★ ☆
+  let totalScore = 0;
+  reviews.forEach((el) => {
+    totalScore += el.score;
+  });
+  const avr = totalScore / reviews.length;
+  const avrRounded = Math.round(avr);
+
   return (
     <Layout user={user}>
       <link rel="stylesheet" href="/css/favorites.css"/>
       <div>{oneWay.title}</div>
+
       <div><img src={`/images/${oneWay.picture_data}`} alt={oneWay.title}/></div>
       <div>Длина маршрута: {oneWay.way_length} км.</div>
+      <div>
+        Рейтинг:
+        {'✮'.repeat(Math.round(avrRounded))}
+        {'☆'.repeat(Math.round(5 - avrRounded))}
+      </div>
       <div>Автор маршрута: {oneWay.User.username}</div>
       <div>Населенный пункт: {oneWay.city}</div>
       <div>Оценка</div>
+
       <button
         id="favorite"
         name="favorite-checkbox"

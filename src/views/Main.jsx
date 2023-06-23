@@ -22,8 +22,8 @@ module.exports = function Main({ user, approved }) {
               <img src={`/images/${way.picture_data}`} alt={`${way.title}`}/>
             </a>
             <div>
-              {way.city} {'*'.repeat(Math.round(way.avr))}
-              {'0'.repeat(Math.floor(5 - way.avr))}
+              {way.city} {'✮'.repeat(Math.round(way.avr))}
+              {'☆'.repeat(Math.floor(5 - way.avr))}
             </div>
             <div>{way.way_length}<span> км</span></div>
             {/*<div>{way.way_data}</div>*/}
