@@ -133,3 +133,4 @@ dist
 .pnp.*
 
 .idea
+public/images

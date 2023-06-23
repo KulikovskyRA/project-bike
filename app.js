@@ -16,7 +16,7 @@ const wayRouter = require('./src/routers/way.router');
 const profileRouter = require('./src/routers/profile.router');
 const descriptionRouter = require('./src/routers/description.router');
 
-// const orderRouter = require('./src/routers/order');
+const adminRouter = require('./src/routers/admin.router');
 
 const sessionConfig = {
   store: new FileStore(), // добавить после установки session-file-store
@@ -44,11 +44,11 @@ app.use('/users', userRouter);
 
 app.use('/way', wayRouter);
 
-
 app.use('/profile', profileRouter);
-app.use('/description', descriptionRouter);
 
-// app.use('/orders', orderRouter);
+app.use('/admin', adminRouter);
+
+app.use('/description', descriptionRouter);
 
 // app.get('/*', (req, res) => {
 //     res.redirect('/');

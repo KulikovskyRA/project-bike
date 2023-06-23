@@ -13,41 +13,6 @@ module.exports = function Layout({ children, title, user }) {
         <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=9722eebf-d9d9-4550-9d23-8795e75df5e2" />
       </head>
       <body className="bg-gray-200">
-        {/* <nav
-          role="banner"
-          classNameName="header sticky-top navbar  navbar-expand-lg bg-body-tertiary p-3"
-        >
-          <div classNameName="container-fluid d-flex justify-content-end">
-            <ul>
-              <a href="/" classNameName="navbar-brand">
-                LOGO
-              </a>
-              <span classNameName="navbar-brand"> | </span>
-
-              <span classNameName="userNameSpan navbar-brand">
-                {user?.username ? (
-                  <a href="/profile/myway">{user.username}</a>
-                ) : (
-                  <a classNameName="navbar-brand" href="/users/register">
-                    Создать аккаунт!
-                  </a>
-                )}
-              </span>
-
-              <span classNameName="navbar-brand"> | </span>
-
-              {user?.username ? (
-                <a classNameName="navbar-brand" href="/users/logout">
-                  Выйти из аккаунта
-                </a>
-              ) : (
-                <a classNameName="navbar-brand" href="/users/login">
-                  Авторизоваться
-                </a>
-              )}
-            </ul>
-          </div>
-        </nav> */}
         <nav className="bg-gray-600">
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">

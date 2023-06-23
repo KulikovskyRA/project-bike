@@ -43,6 +43,45 @@ router.get('/', async (req, res) => {
   render(Main, { user: req.session.user, approved }, res);
 });
 
+router.post('/', async (req, res) => {
+  const { textSearch } = req.body;
+  // console.log(textSearch);
+  try {
+    const approved = await Way.findAll({
+      raw: true,
+      nest: true,
+      where: { approved: true },
+    });
+
+    const ratings = await Review.findAll({
+      raw: true,
+      nest: true,
+    });
+
+    approved.map((a) => {
+      const ratingsA = ratings.filter((el) => el.way_id === a.id);
+
+      let scoreA = 0;
+      ratingsA.forEach((rating) => {
+        scoreA += rating.score;
+      });
+      let avrA;
+      ratingsA.length ? (avrA = scoreA / ratingsA.length) : (avrA = 0);
+      a.avr = avrA;
+      return a;
+    });
+
+    approved.sort((a, b) => b.avr - a.avr);
+
+    const search = approved.filter((el) =>
+      el.title.toLowerCase().includes(textSearch.toLowerCase())
+    );
+    res.json({ search, admin: req.session.user.admin });
+  } catch (err) {
+    res.redirect('/error?what=oi');
+  }
+});
+
 router.get('/error', (req, res) => {
   const { what } = req.query;
   let errorSMS;
@@ -61,20 +100,6 @@ router.get('/error', (req, res) => {
   }
   // console.log(req.query);
   render(ErrorPage, { errorSMS }, res);
-});
-
-router.delete('/admin', async (req, res) => {
-  const { id } = req.body;
-
-  try {
-    const deleteOne = await Way.findByPk(id);
-    await deleteOne.destroy();
-
-    res.sendStatus(200);
-  } catch (err) {
-    console.log(err);
-    res.sendStatus(404);
-  }
 });
 
 module.exports = router;
