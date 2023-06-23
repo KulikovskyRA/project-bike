@@ -134,27 +134,39 @@ module.exports = function Layout({ children, title, user }) {
             </div>
           </div>
         </nav>
-        <div classNameName="bg-gray-600">{children}</div>
+        <div>{children}</div>
       </body>
-      <footer>
-        <div class="footer-icons">
-          <p>The bicycle route</p>
-          <p>© 2023 Все права защищены</p>
+      <footer className="bg-neutral-900 text-center text-white bg-gray-900">
+        <div className="footer-icons">
+          <div className="mb-6 flex justify-center">
+            <div className="p-3"> +7 900 999 99 99</div>
+            <a href="https://www.facebook.com" className="px-1">
+              <img
+                src="/icons/icons8-facebook-48.png"
+                alt="Facebook"
+                style={{ filter: 'grayscale(100%)' }}
+              />
+            </a>
+            <a href="https://www.vk.com" className="px-1">
+              <img
+                src="/icons/icons8-vk-48.png"
+                alt="VK"
+                style={{ filter: 'grayscale(100%)' }}
+              />
+            </a>
+            <a href="https://www.instagram.com" className="px-1">
+              <img
+                src="/icons/icons8-instagram-48.png"
+                alt="Instagram"
+                style={{ filter: 'grayscale(100%)' }}
+              />
+            </a>
 
-          <p>Наши контакты: +7 900 999 99 99</p>
-          <a href="https://www.facebook.com">
-            <img src="/icons/icons8-facebook-48.png" alt="Facebook" />
-          </a>
-          <a href="https://www.vk.com">
-            <img src="/icons/icons8-vk-48.png" alt="VK" />
-          </a>
-          <a href="https://www.instagram.com">
-            <img src="/icons/icons8-instagram-48.png" alt="Instagram" />
-          </a>
-        </div>
-
-        <div className="">
-          <p>Copyright: А. Кургаев, А. Артюхина, Д. Ахметов, Р. Куликовский</p>
+            <div className="p-3">
+              © 2023, Copyright: А. Кургаев, А. Артюхина, Д. Ахметов, Р.
+              Куликовский
+            </div>
+          </div>
         </div>
       </footer>
     </html>

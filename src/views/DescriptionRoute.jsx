@@ -9,8 +9,6 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
   });
   const avr = totalScore / reviews.length;
 
-  
-
   const avrRounded = Math.round(avr) || 0;
 
 
@@ -18,12 +16,9 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
     <Layout user={user}>
       <link rel="stylesheet" href="/css/favorites.css" />
       <div>{oneWay.title}</div>
-
-
       <div>
         <img src={`/images/${oneWay.picture_data}`} alt={oneWay.title} />
       </div>
-
       <div>Длина маршрута: {oneWay.way_length} км.</div>
       <div>
         Рейтинг:
@@ -63,7 +58,6 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
         {/* добавить оценку от 1 до 5*/}
 
         <div className="rating">
-
           <input className="radioButtonRaiting" type="radio" name="rating" id="rating1" value="1" required/>
           <label htmlFor="rating1">1</label>
           <input className="radioButtonRaiting" type="radio" name="rating" id="rating2" value="2"/>
