@@ -4,8 +4,9 @@ const Layout = require('./Layout');
 module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
   return (
     <Layout user={user}>
+      <link rel="stylesheet" href="/css/favorites.css"/>
       <div>{oneWay.title}</div>
-      <div>Длина маршрута: {oneWay.way_length}</div>
+      <div>Длина маршрута: {oneWay.way_length} км.</div>
       <div>Автор маршрута: {oneWay.User.username}</div>
       <div>Населенный пункт: {oneWay.city}</div>
       <div>Оценка</div>
@@ -18,16 +19,16 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
       >
         Добавить в избранное
       </button>
-      <div>
-        Оцените приложения
-        <br />! выводится список звездочек или колёс при нажатии на них
-        предлагается оставить отзыв, если пользователь не хочет оставлять отзыв,
-        то можно просто отправить оценку
-      </div>
-
+      {/*<div>*/}
+      {/*  Оцените приложения*/}
+      {/*  <br/>! выводится список звездочек или колёс при нажатии на них*/}
+      {/*  предлагается оставить отзыв, если пользователь не хочет оставлять отзыв,*/}
+      {/*  то можно просто отправить оценку*/}
+      {/*</div>*/}
+      
       <button id="buttonLeaveFeedback">
         Оставить отзыв
-        <br />
+        <br/>
         Можно отправить пустой отзыв, но нельзя отправить без оценки
       </button>
       <form
@@ -52,16 +53,16 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
           {reviews.map((review) => (
             <li key={`review${review.id}`}>
               {review.text_body}
-              <p>{review['User.username']}</p>
+              <p>{review[ 'User.username' ]}</p>
               <span>{review.createdAt.toLocaleString()}</span>
             </li>
           ))}
         </ul>
       </div>
       <div id="YMapsID"></div>
-      <script defer src="/js/feedback.js" />
-      <script defer src="/js/favorites.js" />
-      <script defer type="text/javascript" src="/js/getRoadOnMap.js" />
+      <script defer src="/js/feedback.js"/>
+      <script defer src="/js/favorites.js"/>
+      <script defer type="text/javascript" src="/js/getRoadOnMap.js"/>
     </Layout>
   );
 };
