@@ -12,27 +12,19 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
 
   return (
     <Layout user={user}>
-      <link rel="stylesheet" href="/css/favorites.css" />
+      <link rel="stylesheet" href="/css/favorites.css"/>
       <div>{oneWay.title}</div>
 
-      <div>
-        Длина маршрута:
-        {oneWay.way_length}
-      </div>
+      <div><img src={`/images/${oneWay.picture_data}`} alt={oneWay.title}/></div>
+      <div>Длина маршрута: {oneWay.way_length} км.</div>
       <div>
         Рейтинг:
         {'✮'.repeat(Math.round(avrRounded))}
         {'☆'.repeat(Math.round(5 - avrRounded))}
       </div>
-      <div>
-        Автор маршрута:
-        {oneWay.User.username}
-      </div>
-      <div>
-        Населенный пункт:
-        {oneWay.city}
-      </div>
-
+      <div>Автор маршрута: {oneWay.User.username}</div>
+      <div>Населенный пункт: {oneWay.city}</div>
+      <div>Оценка</div>
 
       <button
         id="favorite"
@@ -49,10 +41,10 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
       {/*  предлагается оставить отзыв, если пользователь не хочет оставлять отзыв,*/}
       {/*  то можно просто отправить оценку*/}
       {/*</div>*/}
-
+      
       <button id="buttonLeaveFeedback">
         Оставить отзыв
-        <br />
+        <br/>
         Можно отправить пустой отзыв, но нельзя отправить без оценки
       </button>
       <form
@@ -61,20 +53,20 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
         id="formFeedback"
       >
         {/* добавить оценку от 1 до 5*/}
-
+        
         <div className="rating">
-          <input type="radio" name="rating" id="rating1" value="1" required />
+          <input type="radio" name="rating" id="rating1" value="1" required/>
           <label htmlFor="rating1">1</label>
-          <input type="radio" name="rating" id="rating2" value="2" />
+          <input type="radio" name="rating" id="rating2" value="2"/>
           <label htmlFor="rating2">2</label>
-          <input type="radio" name="rating" id="rating3" value="3" />
+          <input type="radio" name="rating" id="rating3" value="3"/>
           <label htmlFor="rating3">3</label>
-          <input type="radio" name="rating" id="rating4" value="4" />
+          <input type="radio" name="rating" id="rating4" value="4"/>
           <label htmlFor="rating4">4</label>
-          <input type="radio" name="rating" id="rating5" value="5" />
+          <input type="radio" name="rating" id="rating5" value="5"/>
           <label htmlFor="rating5">5</label>
         </div>
-
+        
         <label>Поделитесь своим мнением (необязательно)</label>
         <input
           type="text"
@@ -91,16 +83,16 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
           {reviews.map((review) => (
             <li key={`review${review.id}`}>
               {review.text_body}
-              <p>{review['User.username']}</p>
+              <p>{review[ 'User.username' ]}</p>
               <span>{review.createdAt.toLocaleString()}</span>
             </li>
           ))}
         </ul>
       </div>
       <div id="YMapsID"></div>
-      <script defer src="/js/feedback.js" />
-      <script defer src="/js/favorites.js" />
-      <script defer type="text/javascript" src="/js/getRoadOnMap.js" />
+      <script defer src="/js/feedback.js"/>
+      <script defer src="/js/favorites.js"/>
+      <script defer type="text/javascript" src="/js/getRoadOnMap.js"/>
     </Layout>
   );
 };

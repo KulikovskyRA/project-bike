@@ -1,11 +1,7 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function Profile({
-  user,
-  favorCycleRoutes,
-  builtCycleRoutes,
-}) {
+module.exports = function Profile({ user, favorCycleRoutes, builtCycleRoutes }) {
   return (
     <Layout user={user}>
       <div>
@@ -24,7 +20,7 @@ module.exports = function Profile({
               >
                 {favorCycleRoute.Way.title}
               </a>
-              <br />
+              <br/>
               {favorCycleRoute.Way.city}
               <button
                 id="deleteButtonFavor"
@@ -39,24 +35,27 @@ module.exports = function Profile({
           ))}
         </div>
       </div>
-
+      
       <div>
         Мои маршруты
         <div className="contain">
           {builtCycleRoutes.map((cycleRoute) => (
             <div>
+              <a href={`/description/${cycleRoute.id}`}>
+                <img src={`/images/${cycleRoute.picture_data}`} alt={cycleRoute.title}/>
+              </a>
               <a key={cycleRoute.id} href={`/description/${cycleRoute.id}`}>
                 {cycleRoute.title}
               </a>
               {cycleRoute.approved === false ? (
                 <div>Ожидается проверка</div>
               ) : (
-                <div />
+                <div/>
               )}
-
-              <br />
+              
+              <br/>
               {cycleRoute.city}
-
+              
               <button
                 id="deleteButtonCycleRoute"
                 data-cyclerouteid={cycleRoute.id}
@@ -70,7 +69,7 @@ module.exports = function Profile({
           ))}
         </div>
       </div>
-      <script defer src="/js/delete.js" />
+      <script defer src="/js/delete.js"/>
     </Layout>
   );
 };
