@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js --ext js,jsx --ignore sessions"
+    "dev": "nodemon app.js --ext js,jsx --ignore sessions",
+    "build": "tailwindcss build -i src/css/main.css -o public/css/styles.css --watch"
   },
   "keywords": [],
   "author": "",
@@ -18,13 +19,15 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "nodemon": "^2.0.22",
-    "sequelize-cli": "^6.6.1"
+    "sequelize-cli": "^6.6.1",
+    "tailwindcss": "^3.3.2"
   },
   "dependencies": {
     "@babel/core": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-react": "^7.22.5",
     "@babel/register": "^7.22.5",
+    "@tailwindcss/forms": "^0.5.3",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
