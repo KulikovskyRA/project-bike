@@ -1,7 +1,7 @@
 const btnFeedback = document.querySelector('#buttonLeaveFeedback');
-//console.log(btnFeedback);
+// console.log(btnFeedback);
 const formFeedback = document.querySelector('#formFeedback');
-//console.log(formFeedback);
+// console.log(formFeedback);
 const inputClear = document.querySelector('.input_clear');
 const reviewAll = document.querySelector('.review_all');
 
@@ -18,11 +18,11 @@ ArrRadioButtons.map((el) => {
 
 //* сохраняется изначальный текст кнопки
 const btnFeedbackText = btnFeedback.innerText;
-//console.log(btnFeedbackText);
+// console.log(btnFeedbackText);
 
 btnFeedback.addEventListener('click', (e) => {
   e.preventDefault();
-  //console.log('eee');
+  // console.log('eee');
   if (formFeedback.style.display === 'block') {
     formFeedback.style.display = 'none';
     btnFeedback.innerText = btnFeedbackText;
@@ -49,9 +49,9 @@ formFeedback.addEventListener('submit', async (e) => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
-      }
+      },
     );
-    //console.log(response);
+    // console.log(response);
     const res = await response.json();
     console.log(res);
     
@@ -63,18 +63,27 @@ formFeedback.addEventListener('submit', async (e) => {
         approve.remove();
       }, 2000);
       
-      //const rewData = await fetch(`http://localhost:3000/description/newrew/7`);
       const rewData = await fetch(
-        `http://localhost:3000/description/newrev/${res.id}`
+        `http://localhost:3000/description/newrev/${res.id}`,
       );
       
       const result = await rewData.json();
       console.log(result);
       
       const liEl = document.createElement('li');
-      liEl.innerHTML = `${result.text_body}<p>${
-        result.User.username
-      }</p><span>${new Date(result.createdAt).toLocaleString()}</span>
+      liEl.innerHTML = `
+        <div class="flex p-4 bg-white justify-between gap-x-6 py-5">
+                <div class="flex gap-x-4 ">
+            <div class="min-w-0 flex-auto">
+              <p class="text-sm font-semibold leading-6 text-gray-900">${result.User.username}</p>
+              <p class="mt-1 truncate text-xs leading-5 text-gray-500">${result.text_body}</p>
+            </div>
+          </div>
+          <div class="hidden sm:flex sm:flex-col sm:items-end">
+            <p class="text-sm leading-6 text-gray-900">Добавлено:</p>
+            <p class="mt-1 text-xs leading-5 text-gray-500">${new Date(result.createdAt).toLocaleString()}</p>
+          </div>
+        </div>
       `;
       reviewAll.prepend(liEl);
       inputClear.value = '';
