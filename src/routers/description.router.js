@@ -17,7 +17,6 @@ router
           raw: true,
         }
       );
-      //console.log(oneWay);
 
       const reviews = await Review.findAll({
         include: [{ model: User, attributes: ['username'] }],
@@ -25,7 +24,7 @@ router
         raw: true,
         where: { way_id: Number(req.params.id) },
       });
-      // console.log(reviews);
+
       render(
         DescriptionRoute,
         { user: req.session.user, oneWay, reviews },

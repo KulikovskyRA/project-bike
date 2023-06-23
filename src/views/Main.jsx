@@ -20,8 +20,8 @@ module.exports = function Main({ user, approved }) {
             <h5>{way.title}</h5>
             <img src="" alt={`${way.picture_data}`} />
             <div>
-              {way.city} {'*'.repeat(Math.round(way.avr))}
-              {'0'.repeat(Math.floor(5 - way.avr))}
+              {way.city} {'✮'.repeat(Math.round(way.avr))}
+              {'☆'.repeat(Math.floor(5 - way.avr))}
             </div>
             <div>{way.way_length}</div>
             <div>{way.way_data}</div>
