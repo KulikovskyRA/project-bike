@@ -42,54 +42,14 @@ cont.addEventListener('click', async (e) => {
 
 const searchInput = document.querySelector('.searchInput');
 const confirmSearch = document.querySelector('.confirmSearch');
-
 const refreshSearch = document.querySelector('.refreshSearch');
 
-confirmSearch.addEventListener('click', async (e) => {
-  const response = await fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ textSearch: searchInput.value }),
-  });
-
-  const result = await response.json();
-  // console.log(result.search);
-  const { search, admin } = result;
-  // console.log(admin);
-  let html = '';
-
-  search.forEach((way) => {
-    html += `
-      <div class="card" id={way.id}>
-        <h5>${way.title}</h5>
-        <img src="" alt=${way.picture_data} />
-        <div>
-        ${way.city} ${'*'.repeat(Math.round(way.avr))}${'0'.repeat(
-      Math.floor(5 - way.avr)
-    )}
-        </div>
-        <div>${way.way_length}</div>
-        <div>${way.way_data}</div>
-        <a href='/description/${way.id}'}>Перейти в ${way.id}</a>            
-      </div>`;
-
-    if (admin === true) {
-      html += `
-        <button type="button" class="adminDel">
-                Админ удаляет
-        </button>`;
-    }
-  });
-
-  cont.innerHTML = html;
-});
-
-refreshSearch.addEventListener('click', async (e) => {
-  if (searchInput.value !== '') {
+if (confirmSearch) {
+  confirmSearch.addEventListener('click', async (e) => {
     const response = await fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ textSearch: '' }),
+      body: JSON.stringify({ textSearch: searchInput.value }),
     });
 
     const result = await response.json();
@@ -122,5 +82,48 @@ refreshSearch.addEventListener('click', async (e) => {
     });
 
     cont.innerHTML = html;
-  }
-});
+  });
+}
+
+if (refreshSearch) {
+  refreshSearch.addEventListener('click', async (e) => {
+    if (searchInput.value !== '') {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ textSearch: '' }),
+      });
+
+      const result = await response.json();
+      // console.log(result.search);
+      const { search, admin } = result;
+      // console.log(admin);
+      let html = '';
+
+      search.forEach((way) => {
+        html += `
+      <div class="card" id={way.id}>
+        <h5>${way.title}</h5>
+        <img src="" alt=${way.picture_data} />
+        <div>
+        ${way.city} ${'*'.repeat(Math.round(way.avr))}${'0'.repeat(
+          Math.floor(5 - way.avr)
+        )}
+        </div>
+        <div>${way.way_length}</div>
+        <div>${way.way_data}</div>
+        <a href='/description/${way.id}'}>Перейти в ${way.id}</a>            
+      </div>`;
+
+        if (admin === true) {
+          html += `
+        <button type="button" class="adminDel">
+                Админ удаляет
+        </button>`;
+        }
+      });
+
+      cont.innerHTML = html;
+    }
+  });
+}
