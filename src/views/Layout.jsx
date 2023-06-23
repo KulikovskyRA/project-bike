@@ -6,8 +6,26 @@ module.exports = function Layout({ children, title, user }) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{title}</title>
+        <title>The bicycle route</title>
         <link rel="stylesheet" href="/css/styles.css" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/icons/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/icons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/icons/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/icons/site.webmanifest"></link>
 
         <link type="text/css" rel="stylesheet" href="/css/map.css" />
         <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=9722eebf-d9d9-4550-9d23-8795e75df5e2" />
@@ -118,6 +136,27 @@ module.exports = function Layout({ children, title, user }) {
         </nav>
         <div classNameName="bg-gray-600">{children}</div>
       </body>
+      <footer>
+        <div class="footer-icons">
+          <p>The bicycle route</p>
+          <p>© 2023 Все права защищены</p>
+
+          <p>Наши контакты: +7 900 999 99 99</p>
+          <a href="https://www.facebook.com">
+            <img src="/icons/icons8-facebook-48.png" alt="Facebook" />
+          </a>
+          <a href="https://www.vk.com">
+            <img src="/icons/icons8-vk-48.png" alt="VK" />
+          </a>
+          <a href="https://www.instagram.com">
+            <img src="/icons/icons8-instagram-48.png" alt="Instagram" />
+          </a>
+        </div>
+
+        <div className="">
+          <p>Copyright: А. Кургаев, А. Артюхина, Д. Ахметов, Р. Куликовский</p>
+        </div>
+      </footer>
     </html>
   );
 };
