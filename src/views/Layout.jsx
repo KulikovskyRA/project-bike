@@ -7,74 +7,56 @@ module.exports = function Layout({ children, title, user }) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{title}</title>
+        <link rel="stylesheet" href="/css/styles.css" />
 
-        <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-          crossOrigin="anonymous"
-        />
-        <link defer rel="stylesheet" href="/css/favorites.css" />
-        <link defer rel="stylesheet" href="/css/formFeedback.css" />
-
-        <script
-          defer
-          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-          crossOrigin="anonymous"
-        />
         <link type="text/css" rel="stylesheet" href="/css/map.css" />
-        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=9722eebf-d9d9-4550-9d23-8795e75df5e2"></script>
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=9722eebf-d9d9-4550-9d23-8795e75df5e2" />
       </head>
-      <body>
-        <nav
-          role="banner"
-          className="header sticky-top navbar  navbar-expand-lg bg-body-tertiary p-3"
-        >
-          <div className="container-fluid d-flex justify-content-end">
-            <ul>
-              <a href="/" className="navbar-brand">
-                LOGO
-              </a>
-              <span className="navbar-brand"> | </span>
-
-              {user?.admin === true ? (
-                <span>
-                  <a className="navbar-brand" href="/admin">
-                    Проверка маршрутов
-                  </a>
-                  <span className="navbar-brand"> | </span>
-                </span>
-              ) : (
-                <div />
-              )}
-
-              <span className="userNameSpan navbar-brand">
-                {user?.username ? (
-                  <a href="/profile/myway">{user.username}</a>
-                ) : (
-                  <a className="navbar-brand" href="/users/register">
-                    Создать аккаунт!
-                  </a>
-                )}
-              </span>
-
-              <span className="navbar-brand"> | </span>
-
-              {user?.username ? (
-                <a className="navbar-brand" href="/users/logout">
-                  Выйти из аккаунта
-                </a>
-              ) : (
-                <a className="navbar-brand" href="/users/login">
-                  Авторизоваться
-                </a>
-              )}
-            </ul>
+      <body className="bg-gray-200">
+        <nav className="bg-gray-600">
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div className="relative flex h-16 items-center justify-between">
+              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <button type="button" className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                  <span className="sr-only">Open main menu</span>
+                  <svg className="block h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                  </svg>
+                  <svg className="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end">
+                <div className="hidden sm:ml-6 sm:block">
+                  <div className="flex space-x-4">
+                    <a href="/" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Главная</a>
+                    {
+                      user?.username
+                        ? (
+                          <>
+                            <a href="/profile/myway" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{user.username}</a>
+                            <a href="/users/logout" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Выйти</a>
+                          </>
+                        ) : (
+                          <>
+                            <a href="/users/register" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Регистрация</a>
+                            <a href="/users/login" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Вход</a>
+                          </>
+                        )
+                    }
+                  </div>
+                </div>
+              </div>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div className="relative ml-3" />
+              </div>
+            </div>
           </div>
         </nav>
-
-        {children}
+        <div classNameName="bg-gray-600">
+          {children}
+        </div>
       </body>
     </html>
   );
