@@ -66,12 +66,13 @@ module.exports = function Layout({ children, title, user }) {
                     </a>
 
                     {user?.admin === true ? (
-                      <span>
-                        <a className="navbar-brand" href="/admin">
-                          Проверка маршрутов
-                        </a>
-                        <span className="navbar-brand"> | </span>
-                      </span>
+                      <a
+                        href="/admin"
+                        className="text-gray-300 bg-orange-500 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                        aria-current="page"
+                      >
+                        Проверка маршрутов
+                      </a>
                     ) : (
                       <div />
                     )}
@@ -81,6 +82,7 @@ module.exports = function Layout({ children, title, user }) {
                         <a
                           href="/profile/myway"
                           className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                          aria-current="page"
                         >
                           {user.username}
                         </a>
