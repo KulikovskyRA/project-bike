@@ -25,20 +25,21 @@ module.exports = function Main({ user, approved }) {
                 <div className="card bg-white p-4" id={way.id}>
                   <a href={`/description/${way.id}`} className="group">
                     <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                      <img src="" alt={`${way.picture_data}`} className="h-full w-full object-cover object-center group-hover:opacity-75" />
+                      <img src={`/images/${way.picture_data}`} alt={`${way.title}`} className="h-full w-full object-cover object-center group-hover:opacity-75" />
                     </div>
                     <h3 className="mt-1 text-lg font-medium text-gray-900">{way.title}</h3>
                     <p className="mt-4 text-sm text-gray-700">
                       {way.city}
-                      {' '}
-                      {'*'.repeat(Math.round(way.avr))}
-                      {'0'.repeat(Math.floor(5 - way.avr))}
                     </p>
                     <p className="mt-4 text-sm text-gray-700">{way.way_length}</p>
                     <br />
                   </a>
                   {user?.admin === true ? (
                     <div>
+                                <div>
+              {'✮'.repeat(Math.round(way.avr))}
+              {'☆'.repeat(Math.floor(5 - way.avr))}
+            </div>
                       <button type="button" className="adminDel flex w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Удалить</button>
                     </div>
                   ) : (

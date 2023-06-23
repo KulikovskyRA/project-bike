@@ -6,8 +6,26 @@ module.exports = function Layout({ children, title, user }) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{title}</title>
+        <title>The bicycle route</title>
         <link rel="stylesheet" href="/css/styles.css" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/icons/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/icons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/icons/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/icons/site.webmanifest"></link>
 
         <link type="text/css" rel="stylesheet" href="/css/map.css" />
         <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=9722eebf-d9d9-4550-9d23-8795e75df5e2" />
@@ -118,8 +136,41 @@ module.exports = function Layout({ children, title, user }) {
             </div>
           </div>
         </nav>
-        <div classNameName="bg-gray-600">{children}</div>
+        <div>{children}</div>
       </body>
+      <footer className="bg-neutral-900 text-center text-white bg-gray-900">
+        <div className="footer-icons">
+          <div className="mb-6 flex justify-center">
+            <div className="p-3"> +7 900 999 99 99</div>
+            <a href="https://www.facebook.com" className="px-1">
+              <img
+                src="/icons/icons8-facebook-48.png"
+                alt="Facebook"
+                style={{ filter: 'grayscale(100%)' }}
+              />
+            </a>
+            <a href="https://www.vk.com" className="px-1">
+              <img
+                src="/icons/icons8-vk-48.png"
+                alt="VK"
+                style={{ filter: 'grayscale(100%)' }}
+              />
+            </a>
+            <a href="https://www.instagram.com" className="px-1">
+              <img
+                src="/icons/icons8-instagram-48.png"
+                alt="Instagram"
+                style={{ filter: 'grayscale(100%)' }}
+              />
+            </a>
+
+            <div className="p-3">
+              © 2023, Copyright: А. Кургаев, А. Артюхина, Д. Ахметов, Р.
+              Куликовский
+            </div>
+          </div>
+        </div>
+      </footer>
     </html>
   );
 };

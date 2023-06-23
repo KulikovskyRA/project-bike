@@ -17,15 +17,14 @@ router
           raw: true,
         }
       );
-      //console.log(oneWay);
-
+      
       const reviews = await Review.findAll({
         include: [{ model: User, attributes: ['username'] }],
         order: [['id', 'DESC']],
         raw: true,
         where: { way_id: Number(req.params.id) },
       });
-      // console.log(reviews);
+      
       render(
         DescriptionRoute,
         { user: req.session.user, oneWay, reviews },
@@ -35,7 +34,7 @@ router
       console.log(error);
     }
   })
-
+  
   .get('/newrev/:id', async (req, res) => {
     const newReview = await Review.findByPk(req.params.id, {
       include: [{ model: User, attributes: ['username'] }],
@@ -43,7 +42,7 @@ router
     res.send(newReview);
     res.end();
   })
-
+  
   .post('/newrev/:id', async (req, res) => {
     const { id } = req.params;
     try {
@@ -53,7 +52,7 @@ router
           user_id: req.session?.user?.id,
         },
       });
-
+      
       if (!serch) {
         const newReview = await Review.create(
           {
@@ -88,7 +87,7 @@ router
       res.end(error);
     }
   })
-
+  
   .post('/route/like', async (req, res) => {
     console.log(req.body);
     const { way_id, user_id } = req.body;
@@ -99,7 +98,7 @@ router
           user_id,
         },
       });
-
+      
       if (!serchLike) {
         const like = await Favor.create(
           {
@@ -120,7 +119,7 @@ router
       console.log(error);
     }
   })
-
+  
   .post('/route/check', async (req, res) => {
     console.log(req.body);
     const { way_id, user_id } = req.body;
@@ -131,7 +130,7 @@ router
           user_id,
         },
       });
-
+      
       if (!serchLike) {
         res.json({ status: false });
       } else {

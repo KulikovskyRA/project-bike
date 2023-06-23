@@ -9,7 +9,7 @@ module.exports = function NewWay({ user }) {
       <div id="YMapsID"></div>
       <div className="buttons_container">
         <button className="mapButton">Построить маршрут</button>
-        <input type="text" className="way-title" required/>
+        {/*<input type="text" className="way-title" required/>*/}
       </div>
       <div className="forUploadFile">
       </div>

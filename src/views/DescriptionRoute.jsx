@@ -2,8 +2,19 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
+  // ☆ ★ ✮ ★ ☆
+  let totalScore = 0;
+  reviews.forEach((el) => {
+    totalScore += el.score;
+  });
+  const avr = totalScore / reviews.length;
+
+  const avrRounded = Math.round(avr) || 0;
+
+
   return (
     <Layout user={user}>
+
       <div className="">
 
         <div className="py-24 sm:py-32">
@@ -26,7 +37,13 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
                 <div className="items-center gap-x-6">
                   <div id="YMapsID" className="h-80 w-80!" />
                   <div className="mt-6">
-                    <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">Оценка; null</h3>
+                    <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">Оценка:
+                              <div>
+                                  Рейтинг:
+                                  {'✮'.repeat(Math.round(avrRounded))}
+                                  {'☆'.repeat(Math.round(5 - avrRounded))}
+                                </div>
+                      </h3>
                     <p className="text-sm font-semibold leading-6 text-indigo-600">
                       Автор маршрута:
                       {' '}
@@ -50,6 +67,19 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
                       >
                         <p><label>Поделитесь своим мнением</label></p>
                         <p className="cs">(необязательно)</p>
+                                <div className="rating">
+          <input className="radioButtonRaiting" type="radio" name="rating" id="rating1" value="1" required/>
+          <label htmlFor="rating1">1</label>
+          <input className="radioButtonRaiting" type="radio" name="rating" id="rating2" value="2"/>
+          <label htmlFor="rating2">2</label>
+          <input className="radioButtonRaiting" type="radio" name="rating" id="rating3" value="3"/>
+          <label htmlFor="rating3">3</label>
+          <input className="radioButtonRaiting" type="radio" name="rating" id="rating4" value="4"/>
+          <label htmlFor="rating4">4</label>
+          <input className="radioButtonRaiting" type="radio" name="rating" id="rating5" value="5"/>
+
+          <label htmlFor="rating5">5</label>
+        </div>
                         <textarea
                           type="text"
                           name="text_body"
@@ -99,7 +129,7 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
         предлагается оставить отзыв, если пользователь не хочет оставлять отзыв,
         то можно просто отправить оценку
       </div> */}
-
+      <link rel="stylesheet" href="/css/favorites.css" />
       <script defer src="/js/feedback.js" />
       <script defer src="/js/favorites.js" />
       <script defer type="text/javascript" src="/js/getRoadOnMap.js" />
