@@ -11,6 +11,8 @@ module.exports = function NewWay({ user }) {
         <button className="mapButton">Построить маршрут</button>
         <input type="text" className="way-title" required/>
       </div>
+      <div className="forUploadFile">
+      </div>
       <script defer type="text/javascript" src="/js/maps.js"/>
     </Layout>
   );
