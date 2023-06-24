@@ -19,14 +19,14 @@ router.post('/add', async (req, res) => {
   let { title, city, way_length, way_data, way_time, picture_data } = req.body;
   way_length = parseInt(way_length);
   way_data = JSON.stringify(way_data);
-  
+
   let approved;
   if (req.session.user.admin === true) {
     approved = true;
   } else {
     approved = false;
   }
-  
+
   try {
     const newWay = await Way.create({
       user_id,
@@ -64,11 +64,14 @@ router.post('/addphoto/:id', upload.single('photo'), async (req, res) => {
   const picture_data = req.file?.filename || '0777.jpg';
   console.log(picture_data);
   try {
-    await Way.update({ picture_data }, {
-      where: {
-        id,
-      },
-    });
+    await Way.update(
+      { picture_data },
+      {
+        where: {
+          id,
+        },
+      }
+    );
     res.redirect(`/description/${id}`);
   } catch (error) {
     console.error(error);
