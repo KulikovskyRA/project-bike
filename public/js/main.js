@@ -67,12 +67,12 @@ if (confirmSearch) {
           class="h-full w-full object-cover object-center group-hover:opacity-75"
         />
       </div>
-      <h3 class="mt-1 text-lg font-medium text-gray-900">
+      <h3 class="text-lg font-medium text-gray-900">
         ${way.title}
       </h3>
-      <p class="mt-4 text-sm text-gray-700">${way.city}</p>
-      <p class="mt-4 text-sm text-gray-700">${way.way_length}км</p>
-      <br />
+      <p class="text-sm text-gray-700">${way.city}</p>
+      <p class="mt-2 text-sm text-gray-700">${way.way_length} км</p>
+      
     </a>         
       `;
 
@@ -123,12 +123,12 @@ if (refreshSearch) {
             class="h-full w-full object-cover object-center group-hover:opacity-75"
           />
         </div>
-        <h3 class="mt-1 text-lg font-medium text-gray-900">
+        <h3 class="text-lg font-medium text-gray-900">
           ${way.title}
         </h3>
-        <p class="mt-4 text-sm text-gray-700">${way.city}</p>
-        <p class="mt-4 text-sm text-gray-700">${way.way_length} км</p>
-        <br />
+        <p class="text-sm text-gray-700">${way.city}</p>
+        <p class="mt-2 text-sm text-gray-700">${way.way_length} км</p>
+        
       </a>         
         `;
 
