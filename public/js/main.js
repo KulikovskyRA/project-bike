@@ -53,31 +53,45 @@ if (confirmSearch) {
     });
 
     const result = await response.json();
-    // console.log(result.search);
     const { search, admin } = result;
-    // console.log(admin);
     let html = '';
 
     search.forEach((way) => {
       html += `
-      <div class="card" id={way.id}>
-        <h5>${way.title}</h5>
-        <img src="" alt=${way.picture_data} />
-        <div>
-        ${way.city} ${'*'.repeat(Math.round(way.avr))}${'0'.repeat(
-        Math.floor(5 - way.avr)
-      )}
-        </div>
-        <div>${way.way_length}</div>
-        <div>${way.way_data}</div>
-        <a href='/description/${way.id}'}>Перейти в ${way.id}</a>            
-      </div>`;
+      <div class="card bg-white p-4" id=${way.id}>
+      <a href='/description/${way.id}' class="group">
+      <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+        <img
+          src='/images/${way.picture_data}'}
+          alt='${way.title}'}
+          class="h-full w-full object-cover object-center group-hover:opacity-75"
+        />
+      </div>
+      <h3 class="mt-1 text-lg font-medium text-gray-900">
+        ${way.title}
+      </h3>
+      <p class="mt-4 text-sm text-gray-700">${way.city}</p>
+      <p class="mt-4 text-sm text-gray-700">${way.way_length}км</p>
+      <br />
+    </a>         
+      `;
 
       if (admin === true) {
         html += `
-        <button type="button" class="adminDel">
-                Админ удаляет
-        </button>`;
+        <div>
+                  <div>
+                    ${'✮'.repeat(Math.round(way.avr))}
+                    ${'☆'.repeat(Math.floor(5 - way.avr))}
+                  </div>
+                  <button
+                    type="button"
+                    class="adminDel flex w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                      Удалить
+                    </button>
+                  </div>
+        </div>`;
+      } else {
+        html += '</div>';
       }
     });
 
@@ -95,31 +109,45 @@ if (refreshSearch) {
       });
 
       const result = await response.json();
-      // console.log(result.search);
       const { search, admin } = result;
-      // console.log(admin);
       let html = '';
 
       search.forEach((way) => {
         html += `
-      <div class="card" id={way.id}>
-        <h5>${way.title}</h5>
-        <img src="" alt=${way.picture_data} />
-        <div>
-        ${way.city} ${'*'.repeat(Math.round(way.avr))}${'0'.repeat(
-          Math.floor(5 - way.avr)
-        )}
+        <div class="card bg-white p-4" id=${way.id}>
+        <a href='/description/${way.id}' class="group">
+        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+          <img
+            src='/images/${way.picture_data}'}
+            alt='${way.title}'}
+            class="h-full w-full object-cover object-center group-hover:opacity-75"
+          />
         </div>
-        <div>${way.way_length}</div>
-        <div>${way.way_data}</div>
-        <a href='/description/${way.id}'}>Перейти в ${way.id}</a>            
-      </div>`;
+        <h3 class="mt-1 text-lg font-medium text-gray-900">
+          ${way.title}
+        </h3>
+        <p class="mt-4 text-sm text-gray-700">${way.city}</p>
+        <p class="mt-4 text-sm text-gray-700">${way.way_length} км</p>
+        <br />
+      </a>         
+        `;
 
         if (admin === true) {
           html += `
-        <button type="button" class="adminDel">
-                Админ удаляет
-        </button>`;
+          <div>
+                    <div>
+                      ${'✮'.repeat(Math.round(way.avr))}
+                      ${'☆'.repeat(Math.floor(5 - way.avr))}
+                    </div>
+                    <button
+                      type="button"
+                      class="adminDel flex w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                        Удалить
+                      </button>
+                    </div>
+          </div>`;
+        } else {
+          html += '</div>';
         }
       });
 

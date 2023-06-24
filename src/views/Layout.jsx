@@ -137,7 +137,13 @@ module.exports = function Layout({ children, title, user }) {
             </div>
           </div>
         </nav>
-        <div className="h-screen">{children}</div>
+        <div
+          style={{
+            minHeight: '90%',
+          }}
+        >
+          {children}
+        </div>
       </body>
       <footer className="text-center text-white bg-gray-900  px-8">
         <div className="footer-icons">

@@ -6,7 +6,7 @@ module.exports = function Main({ user, approved }) {
     <Layout user={user}>
       <div
         className="upper bg-white rounded-lg flex justify-center items-center"
-        style={{ margin: '15px 20% 15px 20%', padding: '15px', gap: '2%' }}
+        style={{ margin: '25px 20% -65px 20%', padding: '15px', gap: '2%' }}
       >
         <input
           id="search"
@@ -28,10 +28,10 @@ module.exports = function Main({ user, approved }) {
       </div>
 
       <div className="upper">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 cont">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
           <h2 className="sr-only">Products</h2>
 
-          <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 text-center cont">
             {approved.map((way) => (
               <div className="card bg-white p-4" id={way.id}>
                 <a href={`/description/${way.id}`} className="group">
@@ -42,12 +42,13 @@ module.exports = function Main({ user, approved }) {
                       className="h-full w-full object-cover object-center group-hover:opacity-75"
                     />
                   </div>
-                  <h3 className="mt-1 text-lg font-medium text-gray-900">
+                  <h3 className="text-lg font-medium text-gray-900">
                     {way.title}
                   </h3>
-                  <p className="mt-4 text-sm text-gray-700">{way.city}</p>
-                  <p className="mt-4 text-sm text-gray-700">{way.way_length}</p>
-                  <br />
+                  <p className="text-sm text-gray-700">{way.city}</p>
+                  <p className="mt-2 text-sm text-gray-700">
+                    {way.way_length}км
+                  </p>
                 </a>
                 {user?.admin === true ? (
                   <div>
