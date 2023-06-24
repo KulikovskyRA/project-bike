@@ -7,7 +7,7 @@ module.exports = function Layout({ children, title, user }) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>The bicycle route</title>
-        <link rel="stylesheet" href="/css/styles.css" />
+
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -25,13 +25,14 @@ module.exports = function Layout({ children, title, user }) {
           sizes="16x16"
           href="/icons/favicon-16x16.png"
         />
-        <link rel="manifest" href="/icons/site.webmanifest"></link>
+        <link rel="manifest" href="/icons/site.webmanifest" />
+        <link defer rel="stylesheet" href="/css/styles.css" />
 
         <link type="text/css" rel="stylesheet" href="/css/map.css" />
         <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=9722eebf-d9d9-4550-9d23-8795e75df5e2" />
       </head>
       <body className="bg-gray-200">
-        <nav className="bg-gray-600">
+        <nav className="bg-gray-900">
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -77,7 +78,7 @@ module.exports = function Layout({ children, title, user }) {
                   <div className="flex space-x-4">
                     <a
                       href="/"
-                      className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                      className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                       aria-current="page"
                     >
                       Главная
@@ -136,37 +137,39 @@ module.exports = function Layout({ children, title, user }) {
             </div>
           </div>
         </nav>
-        <div>{children}</div>
+        <div style={{ minHeight: '620px' }}>{children}</div>
       </body>
-      <footer className="bg-neutral-900 text-center text-white bg-gray-900">
+      <footer className="text-center text-white bg-gray-900  px-8">
         <div className="footer-icons">
-          <div className="mb-6 flex justify-center">
-            <div className="p-3"> +7 900 999 99 99</div>
-            <a href="https://www.facebook.com" className="px-1">
-              <img
-                src="/icons/icons8-facebook-48.png"
-                alt="Facebook"
-                style={{ filter: 'grayscale(100%)' }}
-              />
-            </a>
-            <a href="https://www.vk.com" className="px-1">
-              <img
-                src="/icons/icons8-vk-48.png"
-                alt="VK"
-                style={{ filter: 'grayscale(100%)' }}
-              />
-            </a>
-            <a href="https://www.instagram.com" className="px-1">
-              <img
-                src="/icons/icons8-instagram-48.png"
-                alt="Instagram"
-                style={{ filter: 'grayscale(100%)' }}
-              />
-            </a>
-
-            <div className="p-3">
+          <div className="mb-6 flex justify-between">
+            <div className="p-2">
               © 2023, Copyright: А. Кургаев, А. Артюхина, Д. Ахметов, Р.
               Куликовский
+            </div>
+
+            <div className="mb-6 flex justify-between">
+              <div className="p-2"> +7 900 999 99 99</div>
+              <a href="https://www.facebook.com" className="px-1">
+                <img
+                  src="/icons/icons8-facebook-48.png"
+                  alt="Facebook"
+                  style={{ filter: 'grayscale(100%)' }}
+                />
+              </a>
+              <a href="https://www.vk.com" className="px-1">
+                <img
+                  src="/icons/icons8-vk-48.png"
+                  alt="VK"
+                  style={{ filter: 'grayscale(100%)' }}
+                />
+              </a>
+              <a href="https://www.instagram.com" className="px-1">
+                <img
+                  src="/icons/icons8-instagram-48.png"
+                  alt="Instagram"
+                  style={{ filter: 'grayscale(100%)' }}
+                />
+              </a>
             </div>
           </div>
         </div>

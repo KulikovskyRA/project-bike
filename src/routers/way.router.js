@@ -20,6 +20,8 @@ router.post('/add', async (req, res) => {
   way_length = parseInt(way_length);
   way_data = JSON.stringify(way_data);
 
+  city = city.split(',')[0];
+
   let approved;
   if (req.session.user.admin === true) {
     approved = true;
