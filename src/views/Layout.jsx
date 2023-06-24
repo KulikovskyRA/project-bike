@@ -7,7 +7,7 @@ module.exports = function Layout({ children, title, user }) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>The bicycle route</title>
-        <link rel="stylesheet" href="/css/styles.css" />
+
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -25,7 +25,8 @@ module.exports = function Layout({ children, title, user }) {
           sizes="16x16"
           href="/icons/favicon-16x16.png"
         />
-        <link rel="manifest" href="/icons/site.webmanifest"></link>
+        <link rel="manifest" href="/icons/site.webmanifest" />
+        <link defer rel="stylesheet" href="/css/styles.css" />
 
         <link type="text/css" rel="stylesheet" href="/css/map.css" />
         <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=9722eebf-d9d9-4550-9d23-8795e75df5e2" />
