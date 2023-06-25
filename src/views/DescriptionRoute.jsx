@@ -26,6 +26,16 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
               <p className="text-lg leading-8 text-gray-600">
                 Населенный пункт: {oneWay.city}
               </p>
+              <button
+                id="favorite"
+                name="favorite-checkbox"
+                value="favorite-button"
+                data-onewayid={oneWay.id}
+                data-userid={user.id}
+                type="button"
+              >
+                Добавить в избранное
+              </button>
             </div>
             <ul role="list" className="mt-6">
               <li>
