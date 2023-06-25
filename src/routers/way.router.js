@@ -63,7 +63,7 @@ router.post('/add', async (req, res) => {
 
 router.post('/addphoto/:id', upload.single('photo'), async (req, res) => {
   const { id } = req.params;
-  const picture_data = req.file?.filename || '0777.jpg';
+  const picture_data = req.file?.filename || '0777';
   console.log(picture_data);
   try {
     await Way.update(
