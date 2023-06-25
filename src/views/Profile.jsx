@@ -18,7 +18,8 @@ module.exports = function Profile({
         </div>
 
         <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-10 lg:max-w-7xl lg:px-2 ">
-          <h2 className="text-2xl px-8">Любимые маршруты</h2>
+          <h2 className="text-2xl px-8">Любимые маршруты:</h2>
+          <br />
           <div className="containFavor grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 text-center">
             {favorCycleRoutes.map((favorCycleRoute) => (
               <div className="card bg-white p-4">
@@ -100,6 +101,7 @@ module.exports = function Profile({
           </div>
         </div>
       </div>
+      <br />
       <script defer src="/js/delete.js" />
     </Layout>
   );
