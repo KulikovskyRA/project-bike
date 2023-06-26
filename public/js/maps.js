@@ -13,7 +13,7 @@ function createFileForm(id) {
   form.method = 'POST';
   const labelPhoto = document.createElement('label');
   labelPhoto.innerText = 'Загрузите фотографию';
-  labelPhoto.className = 'lbelPhoto';
+  labelPhoto.className = 'labelPhoto';
   const inputFile = document.createElement('input');
   inputFile.className = 'input-file';
   inputFile.type = 'file';
@@ -21,6 +21,7 @@ function createFileForm(id) {
   const button = document.createElement('button');
   button.innerText = 'Сохранить';
   button.type = 'submit';
+  button.className = 'flex w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600';
   form.appendChild(labelPhoto);
   form.appendChild(inputFile);
   form.appendChild(button);
@@ -127,12 +128,13 @@ function init() {
       inputWayName.className = 'way-title';
       inputWayName.type = 'text';
       const saveButton = document.createElement('button');
-      saveButton.className = 'button-save-map';
+      saveButton.className = 'button-save-map flex w-full justify-center rounded-md bg-gray-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600';
       saveButton.innerText = 'Далее';
       let checkSaveBtn = document.querySelector('.button-save-map');
       console.log('BUTTON', checkSaveBtn);
       if (!checkSaveBtn) {
         const labelInput = document.createElement('label');
+        labelInput.className = 'labelPhoto';
         labelInput.innerText = 'Придумайте название маршрута';
         btnContainer.appendChild(labelInput);
         btnContainer.appendChild(inputWayName);
