@@ -130,7 +130,7 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
                           className="input_clear subscribe-input"
                         />
                         <div className="submit-btn">
-                          <button data-onewayid={oneWay.id} type="button">
+                          <button data-onewayid={oneWay.id} type="submit">
                             Опубликовать
                           </button>
                         </div>
@@ -180,13 +180,6 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
           </div>
         </div>
       </div>
-      {/* <div>
-        Оцените приложения
-        <br />
-        ! выводится список звездочек или колёс при нажатии на них
-        предлагается оставить отзыв, если пользователь не хочет оставлять отзыв,
-        то можно просто отправить оценку
-      </div> */}
       <link rel="stylesheet" href="/css/favorites.css" />
       <script defer src="/js/feedback.js" />
       <script defer src="/js/favorites.js" />
