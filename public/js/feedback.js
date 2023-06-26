@@ -37,15 +37,15 @@ btnFeedback.addEventListener('click', (e) => {
 
 formFeedback.addEventListener('submit', async (e) => {
   e.preventDefault();
-  alert('dfef');
-  
-  const data = { [ e.target.text_body.name ]: e.target.text_body.value, score };
+  // alert('dfef');
+
+  const data = { [e.target.text_body.name]: e.target.text_body.value, score };
   // console.log(data);
   const path = window.location.pathname;
   //console.log(path);
-  const wayId = path.match(/\d+$/gm)[ 0 ];
+  const wayId = path.match(/\d+$/gm)[0];
   //console.log(wayId);
-  
+
   try {
     const response = await fetch(
       `http://localhost:3000/description/newrev/${wayId}`,
@@ -58,7 +58,7 @@ formFeedback.addEventListener('submit', async (e) => {
     // console.log(response);
     const res = await response.json();
     console.log(res);
-    
+
     if (response.status === 200) {
       const approve = document.createElement('p');
       approve.innerText = 'Ваш отзыв отправлен';
@@ -66,32 +66,32 @@ formFeedback.addEventListener('submit', async (e) => {
       setTimeout(() => {
         approve.remove();
       }, 2000);
-      
+
       const rewData = await fetch(
         `http://localhost:3000/description/newrev/${res.id}`
       );
-      
+
       const result = await rewData.json();
       console.log(result);
-      
+
       const liEl = document.createElement('li');
       liEl.innerHTML = `
         <div class="flex p-4 bg-white justify-between gap-x-6 py-5">
                 <div class="flex gap-x-4 ">
             <div class="min-w-0 flex-auto">
               <p class="text-sm font-semibold leading-6 text-gray-900">${
-        result.User.username
-      }</p>
+                result.User.username
+              }</p>
               <p class="mt-1 truncate text-xs leading-5 text-gray-500">${
-        result.text_body
-      }</p>
+                result.text_body
+              }</p>
             </div>
           </div>
           <div class="hidden sm:flex sm:flex-col sm:items-end">
             <p class="text-sm leading-6 text-gray-900">Добавлено:</p>
             <p class="mt-1 text-xs leading-5 text-gray-500">${new Date(
-        result.createdAt
-      ).toLocaleString()}</p>
+              result.createdAt
+            ).toLocaleString()}</p>
           </div>
         </div>
       `;
