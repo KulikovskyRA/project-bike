@@ -8,9 +8,9 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
     totalScore += el.score;
   });
   const avr = totalScore / reviews.length;
-
+  
   const avrRounded = Math.round(avr) || 0;
-
+  
   return (
     <Layout user={user}>
       <div className="">
@@ -40,7 +40,7 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
             <ul role="list" className="mt-6">
               <li>
                 <div className="items-center gap-x-6">
-                  <div id="YMapsID" className="h-80 w-80!" />
+                  <div id="YMapsID" className="h-80 w-80!"/>
                   <div className="mt-6">
                     <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
                       Оценка:
@@ -62,12 +62,13 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
                       className="flex w-full justify-center rounded-md btn-otz px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       Оставить отзыв
-                      <br />
+                      <br/>
                       Можно отправить пустой отзыв, но нельзя отправить без
                       оценки
                     </button>
                   </div>
-                  <div className="flex mt-8 w-full mx-0 justify-center">
+                  <div id="feedbackContainer" className="flex mt-8 w-full mx-0 justify-center"
+                       style={{ display: 'none' }}>
                     <div className="subscribe">
                       <form
                         action={`/description/newrev/${oneWay.id}`}
@@ -119,7 +120,7 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
                             id="rating5"
                             value="5"
                           />
-
+                          
                           <label htmlFor="rating5">5</label>
                         </div>
                         <textarea
@@ -134,7 +135,7 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
                             Опубликовать
                           </button>
                         </div>
-
+                        
                         {/* добавить оценку от 1 до 5 */}
                       </form>
                     </div>
@@ -155,7 +156,7 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
                           <div className="flex gap-x-4">
                             <div className="min-w-0 flex-auto">
                               <p className="text-sm font-semibold leading-6 text-gray-900">
-                                {review['User.username']}
+                                {review[ 'User.username' ]}
                               </p>
                               <p className="mt-1 truncate text-xs leading-5 text-gray-500">
                                 {review.text_body}
@@ -180,10 +181,10 @@ module.exports = function DescriptionRoute({ user, oneWay, reviews }) {
           </div>
         </div>
       </div>
-      <link rel="stylesheet" href="/css/favorites.css" />
-      <script defer src="/js/feedback.js" />
-      <script defer src="/js/favorites.js" />
-      <script defer type="text/javascript" src="/js/getRoadOnMap.js" />
+      <link rel="stylesheet" href="/css/favorites.css"/>
+      <script defer src="/js/feedback.js"/>
+      <script defer src="/js/favorites.js"/>
+      <script defer type="text/javascript" src="/js/getRoadOnMap.js"/>
     </Layout>
   );
 };
