@@ -137,7 +137,7 @@ module.exports = function Layout({ children, title, user }) {
             </div>
           </div>
         </nav>
-        <div style={{ minHeight: '620px' }}>{children}</div>
+        <div style={{ minHeight: '700px' }}>{children}</div>
       </body>
       <footer className="text-center text-white bg-gray-900  px-8">
         <div className="footer-icons">
